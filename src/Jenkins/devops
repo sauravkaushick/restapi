@@ -1,0 +1,55 @@
+// its a concept used to better collaborate between various teams, dev test ooperation. 
+// it uses CI and CD to incrrease more collab betwwen teams.
+
+//product discovery - intense collaboration between engineering teams design and product management.
+// if customers would buy, can we do it, can stakeholders can help building it. good product discovery. 
+// add code --> go for test --> if pass --> added to the new code. 
+// feature branch---- developer branch ------ test branch ----- main branch.
+//ci and cd speeds uo the developement process
+// write code and build and test ------ ci
+// docker push kubernetes and deploy ------ cd
+//https://www.jenkins.io/doc/book/pipeline/syntax/
+
+//https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/
+// 
+
+
+
+pipeline {
+    agent any 
+    stages {
+        stage("clean up"){
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage("clone"){
+            steps {
+                sh "git clone "
+            }
+        }
+
+        stage("clean up"){
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage("clean up"){
+            steps {
+               dir(testapi)
+               sh "mvn clean install"
+            }
+        }
+
+        stage("clean up"){
+            steps {
+               dir(testapi)
+               sh "mvn test"
+            }
+        }
+
+    }
+}
+
