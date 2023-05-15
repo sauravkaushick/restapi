@@ -26,7 +26,7 @@ pipeline {
 
         stage("clone"){
             steps {
-                sh "git clone "
+                sh "git clone https://github.com/sauravkaushick/restapi.git"
             }
         }
 
